@@ -93,6 +93,8 @@ The `unknown` class covers attack types that appear in the test set but not in t
 
 The reference paper notes that ANN results vary between runs because of random weight initialization. A **fixed random seed** is used here to make the experiment reproducible.
 
+> **Implementation note:** The reference paper specifies a regularized mini-batch gradient ascent algorithm with a learning rate of 0.5, batch size of 1000, and 10 epochs. However, the paper does not specify the regularization coefficient or the exact regularization implementation. Therefore, our implementation uses standard SGD with the reported learning rate, batch size, and number of epochs, without introducing an unspecified regularization term.
+
 ---
 
 ## 6. Additional Model: Random Forest
@@ -160,11 +162,8 @@ ML_MINI_PROJ/
 ├── ML_Mini_Project.ipynb
 ├── README.md
 ├── requirements.txt
-├── .gitignore
-└── venv/
+└── .gitignore
 ```
-
-> **Note:** `venv/` is a local Python virtual environment and is excluded from Git via `.gitignore`. The trained models are stored in `models/`.
 
 ---
 
@@ -173,29 +172,11 @@ ML_MINI_PROJ/
 **1. Clone the repository**
 
 ```bash
-git clone <REPOSITORY_URL>
+git clone https://github.com/86samaresh/ML_MINI_PROJ.git
 cd ML_MINI_PROJ
 ```
 
-**2. Create a virtual environment**
-
-```bash
-python -m venv venv
-```
-
-**3. Activate the virtual environment**
-
-Windows PowerShell:
-```powershell
-venv\Scripts\Activate.ps1
-```
-
-Windows Command Prompt:
-```cmd
-venv\Scripts\activate
-```
-
-**4. Install dependencies**
+**2. Install dependencies**
 
 ```bash
 pip install -r requirements.txt
